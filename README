@@ -1,0 +1,11 @@
+sse - Soichi's Shogi Engine
+===========================
+
+Build
+=====
+
+The only prerequistites are GNU/Linux, make and a modern C++ compiler. Run
+
+	make && ./sse
+
+in the project directory.
