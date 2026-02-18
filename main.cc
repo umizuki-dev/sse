@@ -40,17 +40,18 @@ void printBoard(Board myBoard) {
       std::cout << "後手\n";
       break;
   }
+  
+  /*手番表示と盤との間に間隔をおく*/
+  std::cout << "＝＝＝＝＝\n";
 
   for (int i = 0; i < 7; i++) {
-    /*駒をenumで表現する*/
     /* TODO: assign ints to peices */
     /* TODO: pretty print komadai */
     std::cout << myBoard.komadaiSente[i];
   }
 
   /* need space between komadai and board */
-  std::cout << "\n";
-  std::cout << "\n";
+  std::cout << "\n\n";
 
   for (int i = 0; i < 9; i++) {
     for (int j = 0; j < 9; j++) {
@@ -69,7 +70,7 @@ void printBoard(Board myBoard) {
     std::cout << myBoard.komadaiGote[i];
   }
 
-  /* need to stop board clashing with prompt on exit */
+  /* stop board clashing with prompt on exit */
   std::cout << "\n";
 }
 
