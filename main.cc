@@ -9,7 +9,7 @@ class Board {
   public:
     int bitBoard[9][9];
     int komadaiSente[7];
-    int komadaiGote [7];
+    int komadaiGote[7];
 
     Turn turn;
 
@@ -32,14 +32,17 @@ class Board {
 
 void printBoard(Board myBoard) {
   std::cout << "手番：";
-  if (myBoard.turn == Sente) {
-    std::cout << "先手";
-  } else if (myBoard.turn == Gote) {
-    std::cout << "後手";
+  switch (myBoard.turn) {
+    case Sente:
+      std::cout << "先手\n";
+      break;
+    case Gote:
+      std::cout << "後手\n";
+      break;
   }
-  std::cout << "\n";
 
   for (int i = 0; i < 7; i++) {
+    /*駒をenumで表現する*/
     /* TODO: assign ints to peices */
     /* TODO: pretty print komadai */
     std::cout << myBoard.komadaiSente[i];
