@@ -5,7 +5,6 @@ class Board {
     int bitBoard[9][9];
     int komadaiSente[7];
     int komadaiGote[7];
-
     bool isSente;
 
     Board() {
@@ -25,16 +24,19 @@ class Board {
 
 };
 
+void clear() {
+  for (int i = 0; i < 100; i++) {
+    std::cout << "\n";
+  }
+}
+
 void printBoard(Board myBoard) {
   std::cout << "手番：";
   if (myBoard.isSente) {
-    std::cout << "先手\n";
+    std::cout << "先手\n＝＝＝＝＝\n\n";
   } else {
-    std::cout << "後手\n";
+    std::cout << "後手\n＝＝＝＝＝\n\n";
   }
-
-  /*手番表示と盤との間に間隔をおく*/
-  std::cout << "＝＝＝＝＝\n";
 
   for (int i = 0; i < 7; i++) {
     /* TODO: assign ints to peices */
@@ -68,6 +70,8 @@ void printBoard(Board myBoard) {
 
 int main() {
   Board gameBoard;
+
+  clear();
   printBoard(gameBoard);
   return 0;
 }
