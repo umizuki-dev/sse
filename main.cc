@@ -1,17 +1,12 @@
 #include <iostream>
 
-enum Turn {
-  Sente,
-  Gote,
-};
-
 class Board {
   public:
     int bitBoard[9][9];
     int komadaiSente[7];
     int komadaiGote[7];
 
-    Turn turn;
+    bool isSente;
 
     Board() {
       for (int i = 0; i < 9; i++) {
@@ -25,22 +20,19 @@ class Board {
         komadaiGote[i] = 0;
       }
 
-      turn = Sente;
+      isSente = true;
     }
 
 };
 
 void printBoard(Board myBoard) {
   std::cout << "手番：";
-  switch (myBoard.turn) {
-    case Sente:
-      std::cout << "先手\n";
-      break;
-    case Gote:
-      std::cout << "後手\n";
-      break;
+  if (myBoard.isSente) {
+    std::cout << "先手\n";
+  } else {
+    std::cout << "後手\n";
   }
-  
+
   /*手番表示と盤との間に間隔をおく*/
   std::cout << "＝＝＝＝＝\n";
 
