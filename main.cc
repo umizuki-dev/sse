@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 class Board {
   public:
@@ -30,7 +31,14 @@ void clear() {
   }
 }
 
+void printDigitZenkaku(int n) {
+  std::string zenkaku[10] = {"０", "１", "２", "３", "４", "５", "６", "７", "８", "９"};
+  std::cout << zenkaku[n];
+}
+
 void printBoard(Board myBoard) {
+  clear();
+
   std::cout << "手番：";
   if (myBoard.isSente) {
     std::cout << "先手\n＝＝＝＝＝\n\n";
@@ -39,9 +47,32 @@ void printBoard(Board myBoard) {
   }
 
   for (int i = 0; i < 7; i++) {
-    /* TODO: assign ints to peices */
-    /* TODO: pretty print komadai */
-    std::cout << myBoard.komadaiSente[i];
+    if (myBoard.komadaiSente[i] > 0) {
+      switch (i) {
+        case 0:
+          std::cout << "歩";
+          break;
+        case 1:
+          std::cout << "香";
+          break;
+        case 2:
+          std::cout << "桂";
+          break;
+        case 3:
+          std::cout << "銀";
+          break;
+        case 4:
+          std::cout << "金";
+          break;
+        case 5:
+          std::cout << "角";
+          break;
+        case 6:
+          std::cout << "飛";
+          break;
+      }
+      printDigitZenkaku(myBoard.komadaiSente[i]);
+    }
   }
 
   /* need space between komadai and board */
@@ -59,9 +90,32 @@ void printBoard(Board myBoard) {
   std::cout << "\n";
 
   for (int i = 0; i < 7; i++) {
-    /* TODO: assign ints to peices */
-    /* TODO: pretty print komadai */
-    std::cout << myBoard.komadaiGote[i];
+    if (myBoard.komadaiGote[i] > 0) {
+      switch (i) {
+        case 0:
+          std::cout << "歩";
+          break;
+        case 1:
+          std::cout << "香";
+          break;
+        case 2:
+          std::cout << "桂";
+          break;
+        case 3:
+          std::cout << "銀";
+          break;
+        case 4:
+          std::cout << "金";
+          break;
+        case 5:
+          std::cout << "角";
+          break;
+        case 6:
+          std::cout << "飛";
+          break;
+      }
+      printDigitZenkaku(myBoard.komadaiGote[i]);
+    }
   }
 
   /* stop board clashing with prompt on exit */
@@ -70,8 +124,9 @@ void printBoard(Board myBoard) {
 
 int main() {
   Board gameBoard;
+  gameBoard.komadaiSente[0] = 3;
+  gameBoard.komadaiSente[4] = 1;
 
-  clear();
   printBoard(gameBoard);
   return 0;
 }
