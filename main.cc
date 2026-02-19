@@ -1,13 +1,14 @@
 #include <iostream>
 #include <string>
 
+/*出力はすべて全角で！*/
+
 class Board {
   public:
     int bitBoard[9][9];
     int komadaiSente[7];
     int komadaiGote[7];
     bool isSente;
-
     Board() {
       for (int i = 0; i < 9; i++) {
         for (int j = 0; j < 9; j++) {
@@ -39,11 +40,11 @@ void printDigitZenkaku(int n) {
 void printBoard(Board myBoard) {
   clear();
 
-  std::cout << "手番：";
+  std::cout << "＋＝＝＝＝＝＋\n｜手番：";
   if (myBoard.isSente) {
-    std::cout << "先手\n＝＝＝＝＝\n\n";
+    std::cout << "先手｜\n＋＝＝＝＝＝＋\n\n";
   } else {
-    std::cout << "後手\n＝＝＝＝＝\n\n";
+    std::cout << "後手｜\n＋＝＝＝＝＝＋\n\n";
   }
 
   for (int i = 0; i < 7; i++) {
@@ -78,12 +79,109 @@ void printBoard(Board myBoard) {
   /* need space between komadai and board */
   std::cout << "\n\n";
 
+  std::cout << "\n　ーー　ーー　ーー　ーー　ーー　ーー　ーー　ーー　ーー　\n";
   for (int i = 0; i < 9; i++) {
+    std::cout << "｜";
     for (int j = 0; j < 9; j++) {
-      /* TODO: assign ints to peices */
-      std::cout << myBoard.bitBoard[i][j];
+      switch (myBoard.bitBoard[i][j]) {
+        /*成駒は＋１０、先後の入れ替えは−１をかける*/
+        case 0:
+          std::cout << "＊＊";
+          break;
+        case 1:
+          std::cout << "歩↑";
+          break;
+        case 2:
+          std::cout << "香↑";
+          break;
+        case 3:
+          std::cout << "桂↑";
+          break;
+        case 4:
+          std::cout << "銀↑";
+          break;
+        case 5:
+          std::cout << "金↑";
+          break;
+        case 6:
+          std::cout << "角↑";
+          break;
+        case 7:
+          std::cout << "飛↑";
+          break;
+        case 8:
+          std::cout << "王↑";
+          break;
+        case 9:
+          std::cout << "玉↑";
+          break;
+        case 11:
+          std::cout << "と↑";
+          break;
+        case 12:
+          std::cout << "杏↑";
+          break;
+        case 13:
+          std::cout << "圭↑";
+          break;
+        case 14:
+          std::cout << "全↑";
+          break;
+        case 16:
+          std::cout << "馬↑";
+          break;
+        case 17:
+          std::cout << "龍↑";
+          break;
+        case -1:
+          std::cout << "歩↑";
+          break;
+        case -2:
+          std::cout << "香↑";
+          break;
+        case -3:
+          std::cout << "桂↑";
+          break;
+        case -4:
+          std::cout << "銀↑";
+          break;
+        case -5:
+          std::cout << "金↑";
+          break;
+        case -6:
+          std::cout << "角↑";
+          break;
+        case -7:
+          std::cout << "飛↑";
+          break;
+        case -8:
+          std::cout << "王↑";
+          break;
+        case -9:
+          std::cout << "玉↑";
+          break;
+        case -11:
+          std::cout << "と↑";
+          break;
+        case -12:
+          std::cout << "杏↑";
+          break;
+        case -13:
+          std::cout << "圭↑";
+          break;
+        case -14:
+          std::cout << "全↑";
+          break;
+        case -16:
+          std::cout << "馬↑";
+          break;
+        case -17:
+          std::cout << "龍↑";
+          break;
+      }
+      std::cout << "｜";
     }
-    std::cout << "\n";
+    std::cout << "\n　ーー　ーー　ーー　ーー　ーー　ーー　ーー　ーー　ーー　\n";
   }
 
   /* need space between komadai and board */
@@ -124,9 +222,6 @@ void printBoard(Board myBoard) {
 
 int main() {
   Board gameBoard;
-  gameBoard.komadaiSente[0] = 3;
-  gameBoard.komadaiSente[4] = 1;
-
   printBoard(gameBoard);
   return 0;
 }
